@@ -12,6 +12,7 @@
 #include "G4Colour.hh"
 #include "G4VisAttributes.hh"
 #include "G4Tubs.hh"
+#include "G4VSolid.hh"
 #include "G4SubtractionSolid.hh"
 #include "G4PVPlacement.hh"
 #include "G4NistManager.hh"
@@ -72,7 +73,7 @@ private:
      G4LogicalVolume   *fScoringVolume2,*fScoringVolume_5, *fScoringVolume_6;
      G4LogicalVolume   *fScoringVolume_7,*fScoringVolume_8,*fScoringVolume_9,*fScoringVolume_10;
      G4SubtractionSolid    *collimator;
-     G4Tubs *Hole;
+     G4VSolid* Hole;
 
      G4VPhysicalVolume *fPBox;
 

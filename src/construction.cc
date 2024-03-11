@@ -104,7 +104,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0,                          //its mother  volume
                             false,                      //no boolean operation
                             0);                         //copy number
-/*
+
 //The HDPE_block1
   fblockSize = 10*cm;
 
@@ -444,7 +444,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    red->SetForceAuxEdgeVisible(true);
 
    Lead_LV->SetVisAttributes(red);
-*/ 
+ 
 
    //The Borated polythylene_block1 with pinhole
 
@@ -453,11 +453,12 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   Borated_Box1 = new G4Box("Borated1",                             //its name
                    BoratedSize/2,BoratedSize/2,Borated_thickness/2);   //its dimensions
 
-  Hole = new G4Tubs("BoxHole", 0.0*cm, 10.16*cm, 150*cm, 0*deg, 360*deg);
+  Hole = new G4Tubs("BoxHole", 0.0*cm, 4*cm, 4*cm, 0*deg, 360*deg);
 
+  
   collimator = new G4SubtractionSolid("collimator",
                              Borated_Box1,                      //its logical volume
-                            Hole,                          //its mother  volume
+                             Hole,                          //its mother  volume
                             0,
                              G4ThreeVector(0*cm,0*cm,0*cm)
                             );                         //copy number
@@ -467,7 +468,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   Borated_LV1 = new G4LogicalVolume(collimator,                     //its shape
                               b_polyethylene,                      //its material
-                             "Borated1");                  //its name
+                             "Borated1", 0,0,0);                  //its name
 
   Borated_PV1 = new G4PVPlacement(0,                          //no rotation
                             G4ThreeVector(0*cm,0*cm,21.5*cm),            //at (0,0,0)
