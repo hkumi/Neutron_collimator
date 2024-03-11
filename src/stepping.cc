@@ -29,13 +29,12 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 
      G4LogicalVolume *fScoringVolume2 = detectorConstruction->GetScoringVolume1();
 
-
-
+     
      G4Track* track = step->GetTrack();
      G4double TrackID = step->GetTrack()->GetTrackID();
      //track->SetTrackStatus(fStopAndKill);
      G4int stepNumber = track->GetCurrentStepNumber();
-     //G4cout << "the track material:" << TrackID << G4endl;
+     //G4cout << "the track material:" << TrackID << G4endl; 
 
 
      G4double edep = step->GetTotalEnergyDeposit();
@@ -51,10 +50,10 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
      G4double edep_10 = step->GetTotalEnergyDeposit();
 
      // If it's the first step in the volume, save the position.
-     G4ThreeVector posPhoton;
-     G4StepPoint *preStepPoint;
-     G4StepPoint *postStepPoint ;
-     G4double ekin_1 ;
+     G4ThreeVector posPhoton; 
+     G4StepPoint *preStepPoint; 
+     G4StepPoint *postStepPoint ;   
+     G4double ekin_1 ; 
 
      if (volume == fScoringVolume_1){
         fEventAction->AddEdep(edep);
@@ -81,7 +80,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
           G4cout << "energy  at 1.5MeV =  "<< ekin_1 << G4endl;
           man->FillNtupleDColumn(12, 0, elos);
           man->AddNtupleRow(12);
-
+ 
 
         }*/
            //man->FillNtupleDColumn(12, 0, energy);
@@ -106,7 +105,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
            man->FillNtupleDColumn(2, 1, ekin_2);
            man->AddNtupleRow(2);
 
-
+           
 
 
         }
@@ -207,7 +206,6 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 
         }
      }
-
      if (volume == fScoringVolume_7){
         fEventAction->AddEdep_7(edep_7);
         if (step->IsFirstStepInVolume()){
@@ -256,8 +254,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
         }
 
      }
-
-      if (volume == fScoringVolume_9){
+     if (volume == fScoringVolume_9){
         fEventAction->AddEdep_9(edep_9);
         if (step->IsFirstStepInVolume()){
 
@@ -282,7 +279,6 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
         }
 
      }
-
      if (volume == fScoringVolume_10){
         fEventAction->AddEdep_10(edep_10);
         if (step->IsFirstStepInVolume()){
@@ -302,7 +298,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
            man->FillNtupleDColumn(10, 1, ekin_10);
            man->AddNtupleRow(10);
 
-
+ 
 
         }
      }
@@ -318,6 +314,3 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
   //}
 
 }
-
-
-

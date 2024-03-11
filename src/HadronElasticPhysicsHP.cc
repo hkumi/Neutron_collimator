@@ -50,13 +50,14 @@ HadronElasticPhysicsHP::HadronElasticPhysicsHP(G4int ver)
 : G4HadronElasticPhysics(ver),
   fThermal(false), fNeutronMessenger(0)
 {
-  fNeutronMessenger   = new NeutronHPMessenger(this);
+  fNeutronMessenger   = new NeutronHPMessenger(this);  
 }
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 HadronElasticPhysicsHP::~HadronElasticPhysicsHP()
 {
-  delete fNeutronMessenger;
+  delete fNeutronMessenger;  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -71,15 +72,12 @@ void HadronElasticPhysicsHP::ConstructProcess()
   process->RegisterMe(model1);
   process->AddDataSet(new G4ParticleHPElasticData());
 
-  if (fThermal) {
+  if (fThermal) {    
     G4ParticleHPThermalScattering* model2 = new G4ParticleHPThermalScattering();
     process->RegisterMe(model2);
-    process->AddDataSet(new G4ParticleHPThermalScatteringData());
+    process->AddDataSet(new G4ParticleHPThermalScatteringData());  
     model1->SetMinEnergy(4*eV);
-  }
+  }      
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
-
-

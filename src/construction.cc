@@ -71,7 +71,7 @@ void DetectorConstruction::DefineMaterials()
   polyethylene->AddElement(Cpe, natoms=2);
 
   // borated polyethilene
-  G4Material* b_polyethylene = new G4Material("b_polyethylene",0.94*g/cm3,ncomponents=4,kStateSolid,293*kelvin,1*atmosphere);
+  b_polyethylene = new G4Material("b_polyethylene",0.94*g/cm3,ncomponents=4,kStateSolid,293*kelvin,1*atmosphere);
   b_polyethylene->AddElement(Hpe, 11.6*perCent);
   b_polyethylene->AddElement(Cpe, 61.2*perCent);
   b_polyethylene->AddElement(B, 5*perCent);
@@ -104,7 +104,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0,                          //its mother  volume
                             false,                      //no boolean operation
                             0);                         //copy number
-
+/*
 //The HDPE_block1
   fblockSize = 10*cm;
 
@@ -394,12 +394,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0,true);                         //copy number
 
-   G4VisAttributes* yellow = new G4VisAttributes(G4Colour::Yellow());
-
-   yellow->SetVisibility(true);
-   yellow->SetForceAuxEdgeVisible(true);
-
-   HDPE_LV16->SetVisAttributes(yellow);
+   
 
 //The HDPE_block17
 
@@ -420,12 +415,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 
-   G4VisAttributes* blue = new G4VisAttributes(G4Colour::Blue());
-
-   blue->SetVisibility(true);
-   blue->SetForceAuxEdgeVisible(true);
-
-   HDPE_LV17->SetVisAttributes(blue);
+   
 
 
 //The lead
@@ -450,10 +440,51 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
    G4VisAttributes* red = new G4VisAttributes(G4Colour::Red());
 
-     red->SetVisibility(true);
-     red->SetForceAuxEdgeVisible(true);
+   red->SetVisibility(true);
+   red->SetForceAuxEdgeVisible(true);
 
-     Lead_LV->SetVisAttributes(red);
+   Lead_LV->SetVisAttributes(red);
+*/ 
+
+   //The Borated polythylene_block1 with pinhole
+
+  BoratedSize = 30*cm;
+  Borated_thickness = 3*cm;
+  Borated_Box1 = new G4Box("Borated1",                             //its name
+                   BoratedSize/2,BoratedSize/2,Borated_thickness/2);   //its dimensions
+
+  Hole = new G4Tubs("BoxHole", 0.0*cm, 10.16*cm, 150*cm, 0*deg, 360*deg);
+
+  collimator = new G4SubtractionSolid("collimator",
+                             Borated_Box1,                      //its logical volume
+                            Hole,                          //its mother  volume
+                            0,
+                             G4ThreeVector(0*cm,0*cm,0*cm)
+                            );                         //copy number
+
+
+
+
+  Borated_LV1 = new G4LogicalVolume(collimator,                     //its shape
+                              b_polyethylene,                      //its material
+                             "Borated1");                  //its name
+
+  Borated_PV1 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,0*cm,21.5*cm),            //at (0,0,0)
+                             Borated_LV1,                      //its logical volume
+                            "Borated1",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+
+   G4VisAttributes* green = new G4VisAttributes(G4Colour::Green());
+
+   green->SetVisibility(true);
+   green->SetForceAuxEdgeVisible(true);
+
+   Borated_LV1->SetVisAttributes(green);
 
 
 

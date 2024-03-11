@@ -12,6 +12,7 @@
 #include "G4Colour.hh"
 #include "G4VisAttributes.hh"
 #include "G4Tubs.hh"
+#include "G4SubtractionSolid.hh"
 #include "G4PVPlacement.hh"
 #include "G4NistManager.hh"
 #include "G4SystemOfUnits.hh"
@@ -62,19 +63,20 @@ public:
 
 private:
      G4Box  *HDPE_Box1,*Lead_Box,*HDPE_Box2, *sBox,*HDPE_Box3,*HDPE_Box4,*HDPE_Box5,*HDPE_Box6,*HDPE_Box7,*HDPE_Box8,*HDPE_Box9,*HDPE_Box10;
-     G4Box  *HDPE_Box11,*HDPE_Box12,*HDPE_Box13,*HDPE_Box14,*HDPE_Box15,*HDPE_Box16,*HDPE_Box17;
+     G4Box  *HDPE_Box11,*HDPE_Box12,*HDPE_Box13,*HDPE_Box14,*HDPE_Box15,*HDPE_Box16,*HDPE_Box17,*Borated_Box1;
      G4VPhysicalVolume *Lead_PV,*HDPE_PV1,*HDPE_PV2, *HDPE_PV3,*HDPE_PV4,*HDPE_PV5,*HDPE_PV6,*HDPE_PV7,*HDPE_PV8,*HDPE_PV9,*HDPE_PV10;
-     G4VPhysicalVolume *HDPE_PV11,*HDPE_PV12,*HDPE_PV13,*HDPE_PV14,*HDPE_PV15,*HDPE_PV16,*HDPE_PV17;
+     G4VPhysicalVolume *HDPE_PV11,*HDPE_PV12,*HDPE_PV13,*HDPE_PV14,*HDPE_PV15,*HDPE_PV16,*HDPE_PV17,*Borated_PV1;
      G4LogicalVolume   *fLBox,*Lead_LV,*HDPE_LV1,*HDPE_LV2,*HDPE_LV3,*HDPE_LV4,*HDPE_LV5,*HDPE_LV6,*HDPE_LV7,*HDPE_LV8,*HDPE_LV9,*HDPE_LV10;
-     G4LogicalVolume   *HDPE_LV11,*HDPE_LV12,*HDPE_LV13,*HDPE_LV14,*HDPE_LV15,*HDPE_LV16,*HDPE_LV17;
+     G4LogicalVolume   *HDPE_LV11,*HDPE_LV12,*HDPE_LV13,*HDPE_LV14,*HDPE_LV15,*HDPE_LV16,*HDPE_LV17,*Borated_LV1;
      G4LogicalVolume   *fScoringVolume_1,*fScoringVolume_2,*fScoringVolume_3,*fScoringVolume_4;
      G4LogicalVolume   *fScoringVolume2,*fScoringVolume_5, *fScoringVolume_6;
      G4LogicalVolume   *fScoringVolume_7,*fScoringVolume_8,*fScoringVolume_9,*fScoringVolume_10;
-     G4double       mat_thickness;
+     G4SubtractionSolid    *collimator;
+     G4Tubs *Hole;
 
      G4VPhysicalVolume *fPBox;
 
-     G4double           fBoxSize, fblockSize,fLeadSize;
+     G4double           fBoxSize, fblockSize,fLeadSize,BoratedSize,Borated_thickness ;
      G4Material*        fMaterial;
      G4Material *Air, *b_polyethylene,  *polyethylene, *NaI, *CF4 ;
      G4Material  * leadMaterial;

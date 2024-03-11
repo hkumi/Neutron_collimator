@@ -1,4 +1,3 @@
-
 //
 // ********************************************************************
 // * License and Disclaimer                                           *
@@ -63,6 +62,7 @@
 #include "G4NuclearStopping.hh"
 
 #include "G4SystemOfUnits.hh"
+
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 ElectromagneticPhysics::ElectromagneticPhysics(const G4String& name)
@@ -83,10 +83,11 @@ ElectromagneticPhysics::~ElectromagneticPhysics()
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
 void ElectromagneticPhysics::ConstructProcess()
 {
   G4PhysicsListHelper* ph = G4PhysicsListHelper::GetPhysicsListHelper();
-
+  
   // Add standard EM Processes
   //
   auto particleIterator=GetParticleIterator();
@@ -94,47 +95,48 @@ void ElectromagneticPhysics::ConstructProcess()
   while( (*particleIterator)() ){
     G4ParticleDefinition* particle = particleIterator->value();
     G4String particleName = particle->GetParticleName();
-
+     
     if (particleName == "gamma") {
 
       ph->RegisterProcess(new G4PhotoElectricEffect, particle);
       ph->RegisterProcess(new G4ComptonScattering,   particle);
       ph->RegisterProcess(new G4GammaConversion,     particle);
-
+       
     } else if (particleName == "e-") {
-
+    
       ph->RegisterProcess(new G4eMultipleScattering(), particle);
       ph->RegisterProcess(new G4eIonisation,           particle);
       ph->RegisterProcess(new G4eBremsstrahlung(),     particle);
-
+            
     } else if (particleName == "e+") {
-
+    
       ph->RegisterProcess(new G4eMultipleScattering(), particle);
       ph->RegisterProcess(new G4eIonisation,           particle);
       ph->RegisterProcess(new G4eBremsstrahlung(),     particle);
       ph->RegisterProcess(new G4eplusAnnihilation(),   particle);
-
-    } else if (particleName == "mu+" ||
+                  
+    } else if (particleName == "mu+" || 
                particleName == "mu-"    ) {
 
       ph->RegisterProcess(new G4MuMultipleScattering(), particle);
       ph->RegisterProcess(new G4MuIonisation,           particle);
       ph->RegisterProcess(new G4MuBremsstrahlung(),     particle);
       ph->RegisterProcess(new G4MuPairProduction(),     particle);
-
+                   
     } else if( particleName == "proton" ||
                particleName == "pi-" ||
                particleName == "pi+"    ) {
 
-      ph->RegisterProcess(new G4hMultipleScattering(), particle);
+      ph->RegisterProcess(new G4hMultipleScattering(), particle);      
       ph->RegisterProcess(new G4hIonisation,           particle);
-
-    } else if( particleName == "alpha" ||
+     
+    } else if( particleName == "alpha" || 
                particleName == "He3"    ) {
+
       ph->RegisterProcess(new G4hMultipleScattering(), particle);
       ph->RegisterProcess(new G4ionIonisation,         particle);
       ph->RegisterProcess(new G4NuclearStopping(),     particle);
-
+            
     } else if( particleName == "GenericIon" ) {
 
       ph->RegisterProcess(new G4hMultipleScattering(), particle);
@@ -142,11 +144,11 @@ void ElectromagneticPhysics::ConstructProcess()
       ionIoni->SetEmModel(new G4IonParametrisedLossModel());
       ph->RegisterProcess(ionIoni,                    particle);
       ph->RegisterProcess(new G4NuclearStopping(),    particle);
-
+      
     } else if ((!particle->IsShortLived()) &&
-               (particle->GetPDGCharge() != 0.0) &&
+               (particle->GetPDGCharge() != 0.0) && 
                (particle->GetParticleName() != "chargedgeantino")) {
-
+               
       //all others charged particles except geantino
       ph->RegisterProcess(new G4hMultipleScattering(), particle);
       ph->RegisterProcess(new G4hIonisation(),         particle);
@@ -155,4 +157,3 @@ void ElectromagneticPhysics::ConstructProcess()
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-

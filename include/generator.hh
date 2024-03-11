@@ -24,14 +24,7 @@ public:
 
 private:
     //G4ParticleGun *fParticleGun;
-    G4GeneralParticleSource* fParticleGun;
+    G4GeneralParticleSource* fParticleGun; 
 };
 
 #endif
-
-
-
-
-
-
-

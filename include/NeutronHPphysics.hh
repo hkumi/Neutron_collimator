@@ -1,4 +1,3 @@
-
 //
 // ********************************************************************
 // * License and Disclaimer                                           *
@@ -50,10 +49,10 @@ class NeutronHPphysics : public G4VPhysicsConstructor
   public:
     void ConstructParticle() override { };
     void ConstructProcess() override;
-
+    
   private:
     void DefineCommands();
-
+      
     G4bool              fThermal;
     G4GenericMessenger* fMessenger;
 };
@@ -61,4 +60,3 @@ class NeutronHPphysics : public G4VPhysicsConstructor
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
-

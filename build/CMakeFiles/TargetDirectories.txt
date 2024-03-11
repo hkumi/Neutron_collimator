@@ -1,0 +1,4 @@
+/home/harriet/Geant4/neutron_example/Neutron_collimator/Neutron_collimator/build/CMakeFiles/rebuild_cache.dir
+/home/harriet/Geant4/neutron_example/Neutron_collimator/Neutron_collimator/build/CMakeFiles/Simulation.dir
+/home/harriet/Geant4/neutron_example/Neutron_collimator/Neutron_collimator/build/CMakeFiles/edit_cache.dir
+/home/harriet/Geant4/neutron_example/Neutron_collimator/Neutron_collimator/build/CMakeFiles/sim.dir

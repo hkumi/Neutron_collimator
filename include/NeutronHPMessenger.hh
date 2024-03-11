@@ -1,4 +1,3 @@
-
 //
 // ********************************************************************
 // * License and Disclaimer                                           *
@@ -49,23 +48,16 @@ class NeutronHPMessenger: public G4UImessenger
   public:
     NeutronHPMessenger(HadronElasticPhysicsHP*);
    ~NeutronHPMessenger();
-
+    
     virtual void SetNewValue(G4UIcommand*, G4String);
-
-  private:
+    
+  private:    
     HadronElasticPhysicsHP*  fNeutronPhysics;
-
-    G4UIdirectory*     fPhysDir;
+    
+    G4UIdirectory*     fPhysDir;      
     G4UIcmdWithABool*  fThermalCmd;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
-
-
-
-
-
-
-

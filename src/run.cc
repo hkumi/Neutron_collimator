@@ -12,7 +12,7 @@ MyRunAction::MyRunAction()
     man->CreateNtupleDColumn("fY1");
     man->CreateNtupleDColumn("fZ1");
    // man->CreateNtupleDColumn("fT");
-
+   
 
     man->FinishNtuple(0);
 
@@ -23,7 +23,7 @@ MyRunAction::MyRunAction()
     man->CreateNtupleDColumn("ProtonEnergy_1");
     man->FinishNtuple(1);
 
-    man->CreateNtuple("Scoring_2", "Scoring_2");
+    man->CreateNtuple("Scoring_2", "Scoring_2");   
     man->CreateNtupleDColumn("Edep_2");
     man->CreateNtupleDColumn("ProtonEnergy_2");
     man->CreateNtupleDColumn("fY2");
@@ -64,9 +64,8 @@ MyRunAction::MyRunAction()
     man->CreateNtupleDColumn("fY7");
     man->CreateNtupleDColumn("fZ7");
     man->FinishNtuple(7);
-    
 
-     man->CreateNtuple("Scoring_8", "Scoring_8");
+    man->CreateNtuple("Scoring_8", "Scoring_8");
     man->CreateNtupleDColumn("Edep_8");
     man->CreateNtupleDColumn("ProtonEnergy_8");
     man->CreateNtupleDColumn("fY8");
@@ -90,13 +89,13 @@ MyRunAction::MyRunAction()
     man->CreateNtuple("scoring1","scoring1");
     man->CreateNtupleDColumn("E_silicon");
     man->FinishNtuple(11);
-
+ 
     man->CreateNtuple("Energy","Energy");
     man->CreateNtupleDColumn("Proton_Energy");
     man->FinishNtuple(12);
 
 
-     man->CreateH2("xy1 ","xy1", 100, -2, 2, 100, -2, 2.0);
+    man->CreateH2("xy1 ","xy1", 100, -2, 2, 100, -2, 2.0);
     man->CreateH2("xy2 ","xy2", 100, -2, 2, 100, -2., 2.0);
     man->CreateH2("xy3 ","xy3", 100, -2, 2, 100, -2., 2.0);
     man->CreateH2("xy4 ","xy4", 100, -2, 2, 100, -2., 2.0);
@@ -130,6 +129,11 @@ MyRunAction::MyRunAction()
     man->CreateH1("z9 ","z9", 100, -2, 8);
     man->CreateH1("z10 ","z10", 100,-2, 8);
 
+    
+
+
+
+
 }
 
 MyRunAction::~MyRunAction()
@@ -138,7 +142,7 @@ MyRunAction::~MyRunAction()
 void MyRunAction::BeginOfRunAction(const G4Run* run)
 {
 
-
+     
     G4AnalysisManager *man = G4AnalysisManager::Instance();
 
     G4int runID = run->GetRunID();
@@ -155,4 +159,3 @@ void MyRunAction::EndOfRunAction(const G4Run*)
     man->Write();
     man->CloseFile();
 }
-

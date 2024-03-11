@@ -40,6 +40,7 @@ void MyEventAction::BeginOfEventAction(const G4Event*)
 
     thickness_count = 0.;
 }
+
 void MyEventAction::EndOfEventAction(const G4Event*)
 {
        G4int evt = G4RunManager::GetRunManager()->GetCurrentEvent()->GetEventID();
@@ -97,6 +98,7 @@ void MyEventAction::EndOfEventAction(const G4Event*)
 
 
        }
+
        if (fEdep_8 > 0.0){
           //man->FillNtupleDColumn(8,0,fEdep_8);
           //man->AddNtupleRow(8);

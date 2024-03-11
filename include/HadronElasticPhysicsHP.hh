@@ -1,4 +1,4 @@
-
+//
 // ********************************************************************
 // * License and Disclaimer                                           *
 // *                                                                  *
@@ -43,24 +43,25 @@ class NeutronHPMessenger;
 
 class HadronElasticPhysicsHP : public G4HadronElasticPhysics
 {
-  public:
-    HadronElasticPhysicsHP(G4int ver = 1);
+  public: 
+    HadronElasticPhysicsHP(G4int ver = 1); 
    ~HadronElasticPhysicsHP();
 
-  public:
+  public: 
     virtual void ConstructProcess();
-
+    
   public:
     void SetThermalPhysics(G4bool flag) {fThermal = flag;};
-
+      
   private:
     G4bool                  fThermal;
-    NeutronHPMessenger*     fNeutronMessenger;
+    NeutronHPMessenger*     fNeutronMessenger;          
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
+
 
 
 

@@ -1,4 +1,4 @@
-
+//
 // ********************************************************************
 // * License and Disclaimer                                           *
 // *                                                                  *
@@ -41,24 +41,20 @@
 
 class ElectromagneticPhysics : public G4VPhysicsConstructor
 {
-  public:
+  public: 
     ElectromagneticPhysics(const G4String& name = "standard");
    ~ElectromagneticPhysics();
 
-  public:
+  public: 
     // This method is dummy for physics
     virtual void ConstructParticle() {};
-
+ 
     // This method will be invoked in the Construct() method.
     // each physics process will be instantiated and
-    // registered to the process manager of each particle type
+    // registered to the process manager of each particle type 
     virtual void ConstructProcess();
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif
-
-
-
-

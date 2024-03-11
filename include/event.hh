@@ -61,15 +61,9 @@ private:
     std::vector<G4int> theCollID_8;
     std::vector<G4int> theCollID_9;
     std::vector<G4int> theCollID_10;
-
+ 
 
 };
 
 #endif
-
-
-
-
-
-
 

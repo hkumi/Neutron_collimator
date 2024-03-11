@@ -24,13 +24,13 @@ PhysicsList::PhysicsList()
 
   //add new units
   //
-  new G4UnitDefinition( "millielectronVolt", "meV", "Energy", 1.e-3*eV);
+  new G4UnitDefinition( "millielectronVolt", "meV", "Energy", 1.e-3*eV);   
   new G4UnitDefinition( "mm2/g",  "mm2/g", "Surface/Mass", mm2/g);
-  new G4UnitDefinition( "um2/mg", "um2/mg","Surface/Mass", um*um/mg);
+  new G4UnitDefinition( "um2/mg", "um2/mg","Surface/Mass", um*um/mg);  
   // mandatory for G4NuclideTable
   //
   const G4double meanLife = 1*nanosecond, halfLife = meanLife*std::log(2);
-  G4NuclideTable::GetInstance()->SetThresholdOfHalfLife(halfLife);
+  G4NuclideTable::GetInstance()->SetThresholdOfHalfLife(halfLife);  
   // Neutron Physics
   RegisterPhysics( new NeutronHPphysics("neutronHP"));
   // Optical Physics
@@ -46,14 +46,14 @@ PhysicsList::PhysicsList()
   // Ion Elastic scattering
   //
  // RegisterPhysics( new G4IonElasticPhysics(verb));
-
+  
   // Ion Inelastic physics
   //RegisterPhysics( new G4IonPhysicsXS(verb));
 
    // EM physics
   //RegisterPhysics(new ElectromagneticPhysics());
   RegisterPhysics(new G4EmStandardPhysics());
-
+  
   // Decay
 //  RegisterPhysics(new G4DecayPhysics());
 
@@ -61,7 +61,8 @@ PhysicsList::PhysicsList()
   //RegisterPhysics(new RadioactiveDecayPhysics());
   ////RegisterPhysics(new G4RadioactiveDecayPhysics());
 }
-/....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 PhysicsList::~PhysicsList()
 { }
@@ -87,7 +88,7 @@ void PhysicsList::ConstructParticle()
   pIonConstructor.ConstructParticle();
 
   G4ShortLivedConstructor pShortLivedConstructor;
-  pShortLivedConstructor.ConstructParticle();
+  pShortLivedConstructor.ConstructParticle();  
 }
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
