@@ -61,63 +61,7 @@ void MyEventAction::EndOfEventAction(const G4Event*)
 
        }
 
-       if (fEdep_2 > 0.0){
-          //man->FillNtupleDColumn(2,0,fEdep_2);
-          //man->AddNtupleRow(2);
-
-       }
-
-       if (fEdep_3 > 0.0){
-          //man->FillNtupleDColumn(3,0,fEdep_3);
-          //man->AddNtupleRow(3);
-
-       }
-
-       if (fEdep_4 > 0.0){
-          //man->FillNtupleDColumn(4,0,fEdep_4);
-          //man->AddNtupleRow(4);
-
-       }
-
-       if (fEdep_5 > 0.0){
-          //man->FillNtupleDColumn(5,0,fEdep_5);
-          //man->AddNtupleRow(5);
-
-
-       }
-
-       if (fEdep_6 > 0.0){
-          //man->FillNtupleDColumn(6,0,fEdep_6);
-          //man->AddNtupleRow(6);
-
-       }
-
-       if (fEdep_7 > 0.0){
-          //man->FillNtupleDColumn(7,0,fEdep_7);
-          //man->AddNtupleRow(7);
-
-
-       }
-
-       if (fEdep_8 > 0.0){
-          //man->FillNtupleDColumn(8,0,fEdep_8);
-          //man->AddNtupleRow(8);
-
-
-       }
-
-       if (fEdep_9 > 0.0){
-          //man->FillNtupleDColumn(9,0,fEdep_9);
-          //man->AddNtupleRow(9);
-
-
-       }
-
-       if (fEdep_10 > 0.0){
-          //man->FillNtupleDColumn(10,0,fEdep_10);
-          //man->AddNtupleRow(10);
-
-       }
+       
 
        if (fEdep1 > 0.0){
           man->FillNtupleDColumn(11, 0, fEdep1);

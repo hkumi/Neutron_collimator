@@ -80,6 +80,17 @@ void DetectorConstruction::DefineMaterials()
   // Define the lead material
   leadMaterial = new G4Material("Lead", 82, 207.2 * g/mole, 11.35 * g/cm3);
 
+  //...............creating the materials for the scintillator..............................
+  //----------------------------------- CarbonTetrafluoride ------------------------
+  G4double pressure = 0.0328947*atmosphere; //25Torr
+  G4double temperature = 293.15*kelvin; // 
+  CF4 = new G4Material("CF4", 0.1223*mg/cm3,2,kStateGas,temperature,pressure);
+  CF4->AddElement(C,1);
+  CF4->AddElement(F,4);
+
+//....................End of scintillator material........................................
+
+
 
 
 }
@@ -87,7 +98,7 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
   // The world
-  fBoxSize = 1*m;
+  fBoxSize = 2*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -418,12 +429,12 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    
 
 
-//The lead
+//The lead1
   fLeadSize = 10*cm;
 
 
   Lead_Box = new G4Box("Lead",                             //its name
-                   fLeadSize/2,fLeadSize/2,5*cm/2);   //its dimensions
+                   fLeadSize/2,fLeadSize/2, 5*cm/2);   //its dimensions
 
   Lead_LV = new G4LogicalVolume(Lead_Box,                     //its shape
                               leadMaterial,                      //its material
@@ -448,12 +459,22 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
    //The Borated polythylene_block1 with pinhole
 
+  
+
   BoratedSize = 30*cm;
   Borated_thickness = 3*cm;
   Borated_Box1 = new G4Box("Borated1",                             //its name
                    BoratedSize/2,BoratedSize/2,Borated_thickness/2);   //its dimensions
 
+  
+ 
   Hole = new G4Tubs("BoxHole", 0.0*cm, 4*cm, 4*cm, 0*deg, 360*deg);
+
+  Hole_LV = new G4LogicalVolume(Hole,                     //its shape
+                              Vacc,                      //its material
+                             "H1");                  //its name
+
+
 
   
   collimator = new G4SubtractionSolid("collimator",
@@ -463,12 +484,11 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                              G4ThreeVector(0*cm,0*cm,0*cm)
                             );                         //copy number
 
-
-
-
-  Borated_LV1 = new G4LogicalVolume(collimator,                     //its shape
+   Borated_LV1 = new G4LogicalVolume(collimator,                     //its shape
                               b_polyethylene,                      //its material
                              "Borated1", 0,0,0);                  //its name
+
+
 
   Borated_PV1 = new G4PVPlacement(0,                          //no rotation
                             G4ThreeVector(0*cm,0*cm,21.5*cm),            //at (0,0,0)
@@ -486,7 +506,69 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    green->SetForceAuxEdgeVisible(true);
 
    Borated_LV1->SetVisAttributes(green);
+/*
+   //The lead1
+  
 
+
+  Lead_Box1 = new G4Box("Lead1",                             //its name
+                   BoratedSize/2,BoratedSize/2,5*cm/2);   //its dimensions
+
+  Lead_LV1 = new G4LogicalVolume(Lead_Box1,                     //its shape
+                              leadMaterial,                      //its material
+                             "Lead1");                  //its name
+
+  Lead_PV1 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,0,25.5*cm),            //at (0,0,0)
+                             Lead_LV1,                      //its logical volume
+                            "Lead",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+   G4VisAttributes* yellow= new G4VisAttributes(G4Colour::Yellow());
+
+   yellow->SetVisibility(true);
+   yellow->SetForceAuxEdgeVisible(true);
+
+   Lead_LV1->SetVisAttributes(yellow);
+
+*/
+
+ //the converter
+ auto shield = new G4Box("shield", 50*cm, 50*cm, 0.1/2*mm);
+ auto  lShield = new G4LogicalVolume(shield, polyethylene, "Shield");    
+ auto  pShield = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*cm, 0.*cm, 50*cm),
+                                               lShield,
+                                               "Shield",
+                                               fLBox,
+                                               false,
+                                               0,true); 
+
+ // the detector. 
+
+  
+  G4double ScThick_1 =  3.0*mm;
+
+  auto sScore_1 = new G4Box("sScore_1",
+                            50/2*cm,50/2*cm,ScThick_1/2);
+
+  auto fLScore_1 = new G4LogicalVolume(sScore_1,
+                                       CF4,
+                                      "fLScore_1");
+
+  auto fPScore_r_1 = new G4PVPlacement(0,
+                                    G4ThreeVector(0.*cm,0.*cm,50.155*cm),
+                                    fLScore_1,
+                                    "fPScore_r_1",
+                                    fLBox,
+                                    false,
+                                    0,true);
+  
+
+  fScoringVolume_1 = fLScore_1;
 
 
 

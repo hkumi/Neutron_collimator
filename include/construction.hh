@@ -35,47 +35,24 @@ public:
    ~DetectorConstruction();
 
     G4LogicalVolume *GetScoringVolume() const {return fScoringVolume_1;}
-    G4LogicalVolume *GetScoringVolume_2() const {return fScoringVolume_2;}
-    G4LogicalVolume *GetScoringVolume_3() const {return fScoringVolume_3;}
-    G4LogicalVolume *GetScoringVolume_4() const {return fScoringVolume_4;}
-    G4LogicalVolume *GetScoringVolume_5() const {return fScoringVolume_5;}
-    G4LogicalVolume *GetScoringVolume_6() const {return fScoringVolume_6;}
-    G4LogicalVolume *GetScoringVolume_7() const {return fScoringVolume_7;}
-    G4LogicalVolume *GetScoringVolume_8() const {return fScoringVolume_8;}
-    G4LogicalVolume *GetScoringVolume_9() const {return fScoringVolume_9;}
-    G4LogicalVolume *GetScoringVolume_10() const {return fScoringVolume_10;}
-
-    G4LogicalVolume *GetScoringVolume1() const {return fScoringVolume2;}
+    
 
     virtual G4VPhysicalVolume* Construct();
     void ConstructOPPAC_1(G4double Pos_PPAC_1);
-    void ConstructOPPAC_2(G4double Pos_PPAC_2);
-    void ConstructOPPAC_3(G4double Pos_PPAC_3);
-    void ConstructOPPAC_4(G4double Pos_PPAC_4);
-    void ConstructOPPAC_5(G4double Pos_PPAC_5);
-    void ConstructOPPAC_6(G4double Pos_PPAC_6);
-    void ConstructOPPAC_7(G4double Pos_PPAC_7);
-    void ConstructOPPAC_8(G4double Pos_PPAC_8);
-    void ConstructOPPAC_9(G4double Pos_PPAC_9);
-    void ConstructOPPAC_10(G4double Pos_PPAC_10);
-    void ConstructSilicon_detector(G4double Pos_Silicon);
-    void CreateAndPlaceShield(G4double thickness, G4double size, G4double position, G4LogicalVolume* motherVolume) ;
     void Sphereball( G4double position);
 
 private:
      G4Box  *HDPE_Box1,*Lead_Box,*HDPE_Box2, *sBox,*HDPE_Box3,*HDPE_Box4,*HDPE_Box5,*HDPE_Box6,*HDPE_Box7,*HDPE_Box8,*HDPE_Box9,*HDPE_Box10;
-     G4Box  *HDPE_Box11,*HDPE_Box12,*HDPE_Box13,*HDPE_Box14,*HDPE_Box15,*HDPE_Box16,*HDPE_Box17,*Borated_Box1;
+     G4Box  *HDPE_Box11,*HDPE_Box12,*HDPE_Box13,*HDPE_Box14,*HDPE_Box15,*HDPE_Box16,*HDPE_Box17,*Borated_Box1,*solidScintillator,*Lead_Box1;
      G4VPhysicalVolume *Lead_PV,*HDPE_PV1,*HDPE_PV2, *HDPE_PV3,*HDPE_PV4,*HDPE_PV5,*HDPE_PV6,*HDPE_PV7,*HDPE_PV8,*HDPE_PV9,*HDPE_PV10;
-     G4VPhysicalVolume *HDPE_PV11,*HDPE_PV12,*HDPE_PV13,*HDPE_PV14,*HDPE_PV15,*HDPE_PV16,*HDPE_PV17,*Borated_PV1;
+     G4VPhysicalVolume *HDPE_PV11,*HDPE_PV12,*HDPE_PV13,*HDPE_PV14,*HDPE_PV15,*HDPE_PV16,*HDPE_PV17,*Borated_PV1,*physScintillator,*Lead_PV1;
      G4LogicalVolume   *fLBox,*Lead_LV,*HDPE_LV1,*HDPE_LV2,*HDPE_LV3,*HDPE_LV4,*HDPE_LV5,*HDPE_LV6,*HDPE_LV7,*HDPE_LV8,*HDPE_LV9,*HDPE_LV10;
-     G4LogicalVolume   *HDPE_LV11,*HDPE_LV12,*HDPE_LV13,*HDPE_LV14,*HDPE_LV15,*HDPE_LV16,*HDPE_LV17,*Borated_LV1;
-     G4LogicalVolume   *fScoringVolume_1,*fScoringVolume_2,*fScoringVolume_3,*fScoringVolume_4;
-     G4LogicalVolume   *fScoringVolume2,*fScoringVolume_5, *fScoringVolume_6;
-     G4LogicalVolume   *fScoringVolume_7,*fScoringVolume_8,*fScoringVolume_9,*fScoringVolume_10;
+     G4LogicalVolume   *HDPE_LV11,*HDPE_LV12,*HDPE_LV13,*HDPE_LV14,*HDPE_LV15,*HDPE_LV16,*HDPE_LV17,*Borated_LV1,*logicScintillator,*Lead_LV1;
+     G4LogicalVolume   *fScoringVolume_1, *Hole_LV;
      G4SubtractionSolid    *collimator;
      G4VSolid* Hole;
 
-     G4VPhysicalVolume *fPBox;
+     G4VPhysicalVolume *fPBox, *Hole_PV1;
 
      G4double           fBoxSize, fblockSize,fLeadSize,BoratedSize,Borated_thickness ;
      G4Material*        fMaterial;
