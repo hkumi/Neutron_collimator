@@ -52,7 +52,7 @@ private:
      G4SubtractionSolid    *collimator;
      G4VSolid* Hole;
 
-     G4VPhysicalVolume *fPBox, *Hole_PV1;
+     G4VPhysicalVolume *fPBox, *Hole_PV;
 
      G4double           fBoxSize, fblockSize,fLeadSize,BoratedSize,Borated_thickness ;
      G4Material*        fMaterial;

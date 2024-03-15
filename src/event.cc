@@ -64,8 +64,7 @@ void MyEventAction::EndOfEventAction(const G4Event*)
        
 
        if (fEdep1 > 0.0){
-          man->FillNtupleDColumn(11, 0, fEdep1);
-          man->AddNtupleRow(11);
+          
        }
 
 }

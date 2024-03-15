@@ -72,9 +72,9 @@ void DetectorConstruction::DefineMaterials()
 
   // borated polyethilene
   b_polyethylene = new G4Material("b_polyethylene",0.94*g/cm3,ncomponents=4,kStateSolid,293*kelvin,1*atmosphere);
-  b_polyethylene->AddElement(Hpe, 11.6*perCent);
-  b_polyethylene->AddElement(Cpe, 61.2*perCent);
-  b_polyethylene->AddElement(B, 5*perCent);
+  b_polyethylene->AddElement(Hpe, 5*perCent);
+  b_polyethylene->AddElement(Cpe, 11.2*perCent);
+  b_polyethylene->AddElement(B, 61.2*perCent);
   b_polyethylene->AddElement(O, 22.2*perCent);
 
   // Define the lead material
@@ -468,23 +468,13 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   
  
-  Hole = new G4Tubs("BoxHole", 0.0*cm, 4*cm, 4*cm, 0*deg, 360*deg);
+  Hole = new G4Tubs("BoxHole", 0.0*cm, 3*cm, 1.5*cm, 0*deg, 360*deg);
 
   Hole_LV = new G4LogicalVolume(Hole,                     //its shape
                               Vacc,                      //its material
                              "H1");                  //its name
 
-
-
-  
-  collimator = new G4SubtractionSolid("collimator",
-                             Borated_Box1,                      //its logical volume
-                             Hole,                          //its mother  volume
-                            0,
-                             G4ThreeVector(0*cm,0*cm,0*cm)
-                            );                         //copy number
-
-   Borated_LV1 = new G4LogicalVolume(collimator,                     //its shape
+   Borated_LV1 = new G4LogicalVolume(Borated_Box1,                     //its shape
                               b_polyethylene,                      //its material
                              "Borated1", 0,0,0);                  //its name
 
@@ -497,6 +487,15 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             fLBox,                          //its mother  volume
                             false,                      //no boolean operation
                             0,true);                         //copy number
+
+  Hole_PV = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,0*cm,0*cm),            //at (0,0,0)
+                             Hole_LV,                      //its logical volume
+                            "H1",                    //its name
+                            Borated_LV1,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
 
 
 
@@ -537,6 +536,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 */
 
  //the converter
+/*
  auto shield = new G4Box("shield", 50*cm, 50*cm, 0.1/2*mm);
  auto  lShield = new G4LogicalVolume(shield, polyethylene, "Shield");    
  auto  pShield = new G4PVPlacement(0,
@@ -546,17 +546,17 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                                fLBox,
                                                false,
                                                0,true); 
-
+*/
  // the detector. 
 
   
-  G4double ScThick_1 =  3.0*mm;
+  G4double ScThick_1 =  3.0*cm;
 
   auto sScore_1 = new G4Box("sScore_1",
                             50/2*cm,50/2*cm,ScThick_1/2);
 
   auto fLScore_1 = new G4LogicalVolume(sScore_1,
-                                       CF4,
+                                       Vacc,
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,

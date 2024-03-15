@@ -15,4 +15,4 @@
 /gps/pos/sigma_y 0.5 cm
 
 
-/run/beamOn 99000000
+/run/beamOn 2000000

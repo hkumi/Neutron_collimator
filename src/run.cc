@@ -6,33 +6,18 @@ MyRunAction::MyRunAction()
     G4AnalysisManager *man = G4AnalysisManager::Instance();
     man->SetNtupleMerging(true);
     man->SetVerboseLevel( 1 );
-    man->CreateNtuple("Photons", "Photons");
-    man->CreateNtupleDColumn("Energy");
-    man->CreateNtupleDColumn("fX1");
-    man->CreateNtupleDColumn("fY1");
-    man->CreateNtupleDColumn("fZ1");
-   // man->CreateNtupleDColumn("fT");
-   
-
-    man->FinishNtuple(0);
-
-    // Set axis titles
-
-    man->CreateNtuple("Scoring", "Scoring");
-    man->CreateNtupleDColumn("Edep");
-    man->CreateNtupleDColumn("ProtonEnergy_1");
-    man->FinishNtuple(1);
+    
 
     
  
     man->CreateNtuple("Energy","Energy");
     man->CreateNtupleDColumn("Proton_Energy");
-    man->FinishNtuple(12);
+    man->FinishNtuple(0);
 
 
-    man->CreateH2("xy1 ","xy1", 100, -30, 30, 100, -30, 30.0);
+    man->CreateH2("xy1 ","xy1", 100, -10, 10, 100, -10, 10.0);
     
-    man->CreateH2("a1 ","angle vs energy_1", 100, 0, 200, 100, 0, 2.0);
+    man->CreateH2("a1 ","angle vs energy_1", 100, 0, 100, 100, 0, 2.0);
     
 
     man->CreateH1("z1 ","z1", 100, -2, 100);
