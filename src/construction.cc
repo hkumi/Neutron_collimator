@@ -466,8 +466,8 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   Borated_Box1 = new G4Box("Borated1",                             //its name
                    BoratedSize/2,BoratedSize/2,Borated_thickness/2);   //its dimensions
 
-  
- 
+
+
   Hole = new G4Tubs("BoxHole", 0.0*cm, 3*cm, 1.5*cm, 0*deg, 360*deg);
 
   Hole_LV = new G4LogicalVolume(Hole,                     //its shape

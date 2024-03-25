@@ -14,13 +14,17 @@ MyRunAction::MyRunAction()
     man->CreateNtupleDColumn("Proton_Energy");
     man->FinishNtuple(0);
 
+    man->CreateNtuple("Z-axis","Z-axis");
+    man->CreateNtupleDColumn("Z_axis");
+    man->FinishNtuple(1);
+
 
     man->CreateH2("xy1 ","xy1", 100, -10, 10, 100, -10, 10.0);
     
-    man->CreateH2("a1 ","angle vs energy_1", 100, 0, 100, 100, 0, 2.0);
+    man->CreateH2("a1 ","angle vs energy_1", 100, 0, 60, 100, 0, 2.0);
     
 
-    man->CreateH1("z1 ","z1", 100, -2, 100);
+   
     
     
 
@@ -30,9 +34,11 @@ MyRunAction::MyRunAction()
 }
 
 MyRunAction::~MyRunAction()
-{}
+{
 
-void MyRunAction::BeginOfRunAction(const G4Run* run)
+}
+
+void MyRunAction::BeginOfRunAction(const G4Run* run )
 {
 
      
@@ -51,4 +57,5 @@ void MyRunAction::EndOfRunAction(const G4Run*)
 
     man->Write();
     man->CloseFile();
+
 }

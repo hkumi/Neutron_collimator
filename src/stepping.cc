@@ -10,7 +10,7 @@ MySteppingAction::~MySteppingAction()
 
 void MySteppingAction::UserSteppingAction(const G4Step *step)
 {
-  if (step->GetTrack()->GetDefinition()->GetParticleName() == "gamma" && step->GetPostStepPoint()->GetProcessDefinedStep() != nullptr ) {
+  if (step->GetTrack()->GetDefinition()->GetParticleName() == "neutron" && step->GetPostStepPoint()->GetProcessDefinedStep() != nullptr ) {
      G4AnalysisManager *man = G4AnalysisManager::Instance();
 
      const DetectorConstruction *detectorConstruction = static_cast<const DetectorConstruction*> (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
@@ -50,9 +50,13 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
            man->FillH2(0, posPhoton1[0], posPhoton1[1]);
            man->FillH2(1, angle_1/deg, ekin_1);
 
-           man->FillH1(0,  posPhoton1[2]);
+           
            man->FillNtupleDColumn(0, 0, ekin_1);
            man->AddNtupleRow(0);
+
+           man->FillNtupleDColumn(1, 0, posPhoton1[2]);
+           man->AddNtupleRow(1);
+
         }
      }
      
