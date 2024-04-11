@@ -72,10 +72,11 @@ void DetectorConstruction::DefineMaterials()
 
   // borated polyethilene
   b_polyethylene = new G4Material("b_polyethylene",0.94*g/cm3,ncomponents=4,kStateSolid,293*kelvin,1*atmosphere);
-  b_polyethylene->AddElement(Hpe, 5*perCent);
-  b_polyethylene->AddElement(Cpe, 11.2*perCent);
-  b_polyethylene->AddElement(B, 61.2*perCent);
+  b_polyethylene->AddElement(Hpe, 11.6*perCent);
+  b_polyethylene->AddElement(Cpe, 61.2*perCent);
+  b_polyethylene->AddElement(B, 5*perCent);
   b_polyethylene->AddElement(O, 22.2*perCent);
+  
 
   // Define the lead material
   leadMaterial = new G4Material("Lead", 82, 207.2 * g/mole, 11.35 * g/cm3);
@@ -117,6 +118,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0);                         //copy number
 
 //The HDPE_block1
+
   fblockSize = 10*cm;
 
 
@@ -426,7 +428,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 
-   
+  
 
 
 //The lead1
@@ -505,6 +507,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    green->SetForceAuxEdgeVisible(true);
 
    Borated_LV1->SetVisAttributes(green);
+
 /*
    //The lead1
   
