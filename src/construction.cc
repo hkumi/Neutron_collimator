@@ -508,35 +508,110 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
    Borated_LV1->SetVisAttributes(green);
 
-/*
-   //The lead1
+
+   //The lead2
   
 
+  LeadSize = 3*cm;
+  Lead_Box2 = new G4Box("Lead2",                             //its name
+                   30*cm/2,LeadSize/2,23*cm/2);   //its dimensions
 
-  Lead_Box1 = new G4Box("Lead1",                             //its name
-                   BoratedSize/2,BoratedSize/2,5*cm/2);   //its dimensions
-
-  Lead_LV1 = new G4LogicalVolume(Lead_Box1,                     //its shape
+  Lead_LV2 = new G4LogicalVolume(Lead_Box2,                     //its shape
                               leadMaterial,                      //its material
-                             "Lead1");                  //its name
+                             "Lead2");                  //its name
 
-  Lead_PV1 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,0,25.5*cm),            //at (0,0,0)
-                             Lead_LV1,                      //its logical volume
-                            "Lead",                    //its name
+  Lead_PV2 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,16.5*cm,11.5*cm),            //at (0,0,0)
+                             Lead_LV2,                      //its logical volume
+                            "Lead2",                    //its name
                             fLBox,                          //its mother  volume
                             false,                      //no boolean operation
                             0,true);                         //copy number
 
 
-   G4VisAttributes* yellow= new G4VisAttributes(G4Colour::Yellow());
+  G4VisAttributes* yellow= new G4VisAttributes(G4Colour::Yellow());
 
-   yellow->SetVisibility(true);
-   yellow->SetForceAuxEdgeVisible(true);
+  yellow->SetVisibility(true);
+  yellow->SetForceAuxEdgeVisible(true);
 
-   Lead_LV1->SetVisAttributes(yellow);
+  Lead_LV2->SetVisAttributes(red);
 
-*/
+
+
+     //The lead3
+  Lead_Box3 = new G4Box("Lead3",                             //its name
+                   3*cm/2,30*cm/2, 23*cm/2);   //its dimensions
+
+  Lead_LV3 = new G4LogicalVolume(Lead_Box3,                     //its shape
+                              leadMaterial,                      //its material
+                             "Lead3");                  //its name
+
+  Lead_PV3 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(16.5*cm,0*cm,11.5*cm),            //at (0,0,0)
+                             Lead_LV3,                      //its logical volume
+                            "Lead3",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+   
+  Lead_LV3->SetVisAttributes(red);
+
+  //The lead4
+  Lead_Box4 = new G4Box("Lead4",                             //its name
+                   3*cm/2,30*cm/2, 23*cm/2);   //its dimensions
+
+  Lead_LV4 = new G4LogicalVolume(Lead_Box4,                     //its shape
+                              leadMaterial,                      //its material
+                             "Lead4");                  //its name
+
+  Lead_PV4 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(-16.5*cm,0*cm,11.5*cm),            //at (0,0,0)
+                             Lead_LV4,                      //its logical volume
+                            "Lead4",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+   
+  Lead_LV4->SetVisAttributes(red);
+
+  //The lead5
+  Lead_Box5 = new G4Box("Lead5",                             //its name
+                   30*cm/2,30*cm/2, 3*cm/2);   //its dimensions
+
+  Lead_LV5 = new G4LogicalVolume(Lead_Box5,                     //its shape
+                              leadMaterial,                      //its material
+                             "Lead5");                  //its name
+
+  Lead_PV5 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,0*cm,24.5*cm),            //at (0,0,0)
+                             Lead_LV5,                      //its logical volume
+                            "Lead5",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+  Hole_PV2 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,0*cm,0*cm),            //at (0,0,0)
+                             Hole_LV,                      //its logical volume
+                            "H2",                    //its name
+                             Lead_LV5,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+
+
+   
+  Lead_LV5->SetVisAttributes(yellow);
+
+
+
+
+
+
 
  //the converter
 /*
