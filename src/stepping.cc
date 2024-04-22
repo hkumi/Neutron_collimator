@@ -43,7 +43,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
            preStepPoint = step->GetPreStepPoint();
            postStepPoint = step->GetPostStepPoint();
            G4double ekin_1  = postStepPoint->GetKineticEnergy()/eV;
-           if (ekin_1 < 0.025) { 
+           if (ekin_1 <= 0.025) { 
               G4ThreeVector p0_1 = postStepPoint->GetMomentumDirection();
               G4double angle_1 = std::acos(p0_1.z());
               G4ThreeVector posPhoton1 = postStepPoint->GetPosition()/cm;
@@ -59,7 +59,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
               man->FillNtupleDColumn(3, 0, posPhoton1[2]);
               man->AddNtupleRow(3);
            }
-           else if (ekin_1 >= 0.025 && ekin_1 <= 50000.0){
+           else if (ekin_1 > 0.025 && ekin_1 <= 50000.0){
                    G4ThreeVector p0_1 = postStepPoint->GetMomentumDirection();
                    G4double angle_1 = std::acos(p0_1.z());
                    G4ThreeVector posPhoton1 = postStepPoint->GetPosition()/cm;

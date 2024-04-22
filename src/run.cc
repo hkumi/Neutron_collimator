@@ -38,17 +38,17 @@ MyRunAction::MyRunAction()
 
 
 
-    man->CreateH2("xy1 ","xy1", 100, -10, 10, 100, -10, 10.0);
-    man->CreateH2("xy2 ","xy2", 100, -10, 10, 100, -10, 10.0);
-    man->CreateH2("xy3 ","xy3", 100, -10, 10, 100, -10, 10.0);
+    man->CreateH2("xy1 ","xy1", 100, -40, 40, 100, -40, 40.0);
+    man->CreateH2("xy2 ","xy2", 100, -40, 40, 100, -40, 40.0);
+    man->CreateH2("xy3 ","xy3", 100, -40, 40, 100, -40, 40.0);
 
     man->CreateH2("a1 ","angle vs energy_1", 100, 0, 60, 100, 0, 0.025);
-    man->CreateH2("a2 ","angle vs energy_2", 100, 0, 60, 100, 0.025, 50000.0);
-    man->CreateH2("a3 ","angle vs energy_3", 100, 0, 60, 100, 50000, 2000000.0);
+    man->CreateH2("a2 ","angle vs energy_2", 100, 0, 60, 100, 0, 50000.0);
+    man->CreateH2("a3 ","angle vs energy_3", 100, 0, 60, 100, 0, 100000.0);
 
     man->CreateH1("thermalEnergy","thermalEnergy", 100,0 , 0.025);
-    man->CreateH1("EpithermalEnergy ","EpithermalEnergy", 100,0.025 , 50000);
-    man->CreateH1("FastEnergy ","FastEnergy", 100,50000 , 2000000);
+    man->CreateH1("EpithermalEnergy ","EpithermalEnergy", 100,0 , 50000);
+    man->CreateH1("FastEnergy ","FastEnergy", 100,0,100000);
 
    
     
