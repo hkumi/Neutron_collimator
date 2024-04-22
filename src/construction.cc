@@ -57,6 +57,9 @@ void DetectorConstruction::DefineMaterials()
   H2O->GetIonisation()->SetMeanExcitationEnergy(78.0*eV);
   // vacuum
   Vacc = new G4Material("Galactic", z=1, a=1.01*g/mole, Vdens, kStateGas, Vtemp, Vpres);
+
+  //Graphite 
+  mat_graphite = nist->FindOrBuildMaterial("G4_GRAPHITE");
   // air
   G4Element* N = new G4Element("Nitrogen", "N", 7., 14.01*g/mole);
   Air = new G4Material("air", 1.290*mg/cm3, ncomponents=2, kStateGas, 293*kelvin, 1*atmosphere);
@@ -457,16 +460,76 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    red->SetForceAuxEdgeVisible(true);
 
    Lead_LV->SetVisAttributes(red);
+   // Graphite block1 
+/*
+  fGraphiteSize = 10*cm;
+
+
+  Graphite_Box = new G4Box("Grap",                             //its name
+                   fGraphiteSize/2,fGraphiteSize/2, 5*cm/2);   //its dimensions
+
+  Graphite_LV = new G4LogicalVolume(Graphite_Box,                     //its shape
+                              mat_graphite,                      //its material
+                             "Grap");                  //its name
+
+  Graphite_PV = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,0,17.5*cm),            //at (0,0,0)
+                             Graphite_LV,                      //its logical volume
+                            "Grap",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+  Hole3 = new G4Tubs("BoxHole3", 0.0*cm, 3*cm, 2.5*cm, 0*deg, 360*deg);
+
+  Hole_LV3 = new G4LogicalVolume(Hole3,                     //its shape
+                                 Vacc,                      //its material
+                                 "H3");    
  
 
-   //The Borated polythylene_block1 with pinhole
+   // Graphite block2 
 
-  
+
+  Graphite_Box2 = new G4Box("Grap2",                             //its name
+                   30*cm/2,3*cm/2, 20*cm/2);   //its dimensions
+
+  Graphite_LV2 = new G4LogicalVolume(Graphite_Box2,                     //its shape
+                              mat_graphite,                      //its material
+                             "Grap2");                  //its name
+
+  Graphite_PV2 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,6.5*cm,10*cm),            //at (0,0,0)
+                             Graphite_LV2,                      //its logical volume
+                            "Grap2",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+  // // Graphite block3
+
+
+  Graphite_Box3 = new G4Box("Grap3",                             //its name
+                   30*cm/2,3*cm/2, 20*cm/2);   //its dimensions
+
+  Graphite_LV3 = new G4LogicalVolume(Graphite_Box3,                     //its shape
+                              mat_graphite,                      //its material
+                             "Grap3");                  //its name
+
+  Graphite_PV3 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,-6.5*cm,10*cm),            //at (0,0,0)
+                             Graphite_LV3,                      //its logical volume
+                            "Grap3",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+  */
+  //The Borated polythylene_block1 with pinhole
 
   BoratedSize = 30*cm;
   Borated_thickness = 3*cm;
   Borated_Box1 = new G4Box("Borated1",                             //its name
-                   BoratedSize/2,BoratedSize/2,Borated_thickness/2);   //its dimensions
+                   BoratedSize/2,  BoratedSize/2,Borated_thickness/2);   //its dimensions
 
 
 
@@ -498,8 +561,18 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0,true);                         //copy number
 
+/*
+  Hole_PV3 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0*cm,0*cm,0*cm),            //at (0,0,0)
+                            Hole_LV3,                      //its logical volume
+                            "H3",                    //its name
+                            Graphite_LV,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
 
 
+
+*/
 
    G4VisAttributes* green = new G4VisAttributes(G4Colour::Green());
 
@@ -539,6 +612,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
      //The lead3
+ 
   Lead_Box3 = new G4Box("Lead3",                             //its name
                    3*cm/2,30*cm/2, 23*cm/2);   //its dimensions
 
@@ -559,6 +633,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   Lead_LV3->SetVisAttributes(red);
 
   //The lead4
+
   Lead_Box4 = new G4Box("Lead4",                             //its name
                    3*cm/2,30*cm/2, 23*cm/2);   //its dimensions
 
@@ -579,6 +654,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   Lead_LV4->SetVisAttributes(red);
 
   //The lead5
+
   Lead_Box5 = new G4Box("Lead5",                             //its name
                    30*cm/2,30*cm/2, 3*cm/2);   //its dimensions
 
@@ -605,40 +681,20 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
    
-  Lead_LV5->SetVisAttributes(yellow);
-
-
-
-
-
-
-
- //the converter
-/*
- auto shield = new G4Box("shield", 50*cm, 50*cm, 0.1/2*mm);
- auto  lShield = new G4LogicalVolume(shield, polyethylene, "Shield");    
- auto  pShield = new G4PVPlacement(0,
-                                               G4ThreeVector(0.*cm, 0.*cm, 50*cm),
-                                               lShield,
-                                               "Shield",
-                                               fLBox,
-                                               false,
-                                               0,true); 
-*/
- // the detector. 
+  Lead_LV5->SetVisAttributes(red);
 
   
   G4double ScThick_1 =  3.0*cm;
 
   auto sScore_1 = new G4Box("sScore_1",
-                            50/2*cm,50/2*cm,ScThick_1/2);
+                            70/2*cm,70/2*cm,ScThick_1/2);
 
   auto fLScore_1 = new G4LogicalVolume(sScore_1,
                                        Vacc,
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,50.155*cm),
+                                    G4ThreeVector(0.*cm,0.*cm,60*cm),
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
