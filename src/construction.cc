@@ -536,6 +536,42 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0,true);                         //copy number
 
 
+ //The HDPE_block24
+  
+
+  HDPE_Box24 = new G4Box("HDPE24",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV24 = new G4LogicalVolume(HDPE_Box24,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE24");                  //its name
+
+  HDPE_PV24 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV24,                      //its logical volume
+                            "HDPE24",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+//The HDPE_block25
+
+
+  HDPE_Box25 = new G4Box("HDPE25",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV25 = new G4LogicalVolume(HDPE_Box25,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE25");                  //its name
+
+  HDPE_PV25 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(0,-10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV25,                      //its logical volume
+                            "HDPE25",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
 
 
 
