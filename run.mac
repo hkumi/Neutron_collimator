@@ -6,7 +6,7 @@
 /run/verbose 2
 
 /gps/particle neutron
-/gps/energy 2 MeV
+/gps/energy 100 keV
 #/gps/position 0. 0. -19. mm
 /gps/direction 0. 0. 1.
 /gps/pos/type Beam
