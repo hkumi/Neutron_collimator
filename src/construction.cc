@@ -465,6 +465,80 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0,true);
 
+     //The HDPE_block20
+
+
+  HDPE_Box20 = new G4Box("HDPE20",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV20 = new G4LogicalVolume(HDPE_Box20,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE20");                  //its name
+
+  HDPE_PV20 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(10*cm,10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV20,                      //its logical volume
+                            "HDPE20",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+ //The HDPE_block21
+
+  HDPE_Box21 = new G4Box("HDPE21",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV21 = new G4LogicalVolume(HDPE_Box21,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE21");                  //its name
+
+  HDPE_PV21 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(-10*cm,10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV21,                      //its logical volume
+                            "HDPE21",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+//The HDPE_block22
+
+
+  HDPE_Box22 = new G4Box("HDPE22",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV22 = new G4LogicalVolume(HDPE_Box22,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE22");                  //its name
+
+  HDPE_PV22 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(-10*cm,0*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV22,                      //its logical volume
+                            "HDPE22",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+//The HDPE_block23
+
+  HDPE_Box23 = new G4Box("HDPE23",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV23 = new G4LogicalVolume(HDPE_Box23,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE23");                  //its name
+
+  HDPE_PV23 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(10*cm,0*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV23,                      //its logical volume
+                            "HDPE23",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+
+
+
+
 
 
 
