@@ -533,7 +533,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 
-  Hole = new G4Tubs("BoxHole", 0.0*cm, 3*cm, 1.5*cm, 0*deg, 360*deg);
+  Hole = new G4Tubs("BoxHole", 0.0*cm, 0.75*cm, 1.5*cm, 0*deg, 360*deg);  // the diameter of the exit(pinhole) is 3cm. In G4 we use halfsize of the radius. 
 
   Hole_LV = new G4LogicalVolume(Hole,                     //its shape
                               Vacc,                      //its material
@@ -694,7 +694,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,60*cm),
+                                    G4ThreeVector(0.*cm,0.*cm,76*cm), // distance from the collimator to the detector. 
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
