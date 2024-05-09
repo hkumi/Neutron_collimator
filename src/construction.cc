@@ -429,6 +429,45 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0,true);                         //copy number
 
+    //The HDPE_block18
+
+
+  HDPE_Box18 = new G4Box("HDPE18",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV18 = new G4LogicalVolume(HDPE_Box18,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE18");                  //its name
+
+  HDPE_PV18 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(10*cm,-10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV18,                      //its logical volume
+                            "HDPE18",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);                         //copy number
+
+    //The HDPE_block19
+
+
+  HDPE_Box19 = new G4Box("HDPE19",                             //its name
+                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+
+  HDPE_LV19 = new G4LogicalVolume(HDPE_Box19,                     //its shape
+                              polyethylene,                      //its material
+                             "HDPE19");                  //its name
+
+  HDPE_PV19 = new G4PVPlacement(0,                          //no rotation
+                            G4ThreeVector(-10*cm,-10*cm,25*cm),            //at (0,0,0)
+                             HDPE_LV19,                      //its logical volume
+                            "HDPE19",                    //its name
+                            fLBox,                          //its mother  volume
+                            false,                      //no boolean operation
+                            0,true);
+
+
+
+
 
 
   
@@ -694,7 +733,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,76*cm), // distance from the collimator to the detector. 
+                                    G4ThreeVector(0.*cm,0.*cm,80*cm), // distance from the collimator to the detector. 
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
