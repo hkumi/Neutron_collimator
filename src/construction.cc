@@ -770,7 +770,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                              "Lead3");                  //its name
 
   Lead_PV3 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(16.5*cm,0*cm,11.5*cm),            //at (0,0,0)
+                            G4ThreeVector(16.5*cm,0*cm,16.5*cm),            //at (0,0,0)
                              Lead_LV3,                      //its logical volume
                             "Lead3",                    //its name
                             fLBox,                          //its mother  volume
@@ -812,7 +812,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                              "Lead5");                  //its name
 
   Lead_PV5 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0*cm,0*cm,24.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0*cm,0*cm,34.5*cm),            //at (0,0,0)
                              Lead_LV5,                      //its logical volume
                             "Lead5",                    //its name
                             fLBox,                          //its mother  volume
