@@ -695,7 +695,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   Borated_PV1 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0*cm,0*cm,21.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0*cm,0*cm,31.5*cm),            //at (0,0,0)
                              Borated_LV1,                      //its logical volume
                             "Borated1",                    //its name
                             fLBox,                          //its mother  volume
