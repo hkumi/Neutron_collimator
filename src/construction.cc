@@ -126,14 +126,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box1 = new G4Box("HDPE1",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,40*cm/2);   //its dimensions
 
   HDPE_LV1 = new G4LogicalVolume(HDPE_Box1,                     //its shape
                               polyethylene,                      //its material
                              "HDPE1");                  //its name
 
   HDPE_PV1 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,0,5*cm),            //at (0,0,0)
+                            G4ThreeVector(0,0,20*cm),            //at (0,0,0)
                              HDPE_LV1,                      //its logical volume
                             "HDPE1",                    //its name
                             fLBox,                          //its mother  volume
@@ -433,14 +433,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box18 = new G4Box("HDPE18",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV18 = new G4LogicalVolume(HDPE_Box18,                     //its shape
                               polyethylene,                      //its material
                              "HDPE18");                  //its name
 
   HDPE_PV18 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(10*cm,-10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(10*cm,-10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV18,                      //its logical volume
                             "HDPE18",                    //its name
                             fLBox,                          //its mother  volume
@@ -451,14 +451,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box19 = new G4Box("HDPE19",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV19 = new G4LogicalVolume(HDPE_Box19,                     //its shape
                               polyethylene,                      //its material
                              "HDPE19");                  //its name
 
   HDPE_PV19 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(-10*cm,-10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(-10*cm,-10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV19,                      //its logical volume
                             "HDPE19",                    //its name
                             fLBox,                          //its mother  volume
@@ -469,14 +469,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box20 = new G4Box("HDPE20",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV20 = new G4LogicalVolume(HDPE_Box20,                     //its shape
                               polyethylene,                      //its material
                              "HDPE20");                  //its name
 
   HDPE_PV20 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(10*cm,10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(10*cm,10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV20,                      //its logical volume
                             "HDPE20",                    //its name
                             fLBox,                          //its mother  volume
@@ -486,14 +486,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
  //The HDPE_block21
 
   HDPE_Box21 = new G4Box("HDPE21",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV21 = new G4LogicalVolume(HDPE_Box21,                     //its shape
                               polyethylene,                      //its material
                              "HDPE21");                  //its name
 
   HDPE_PV21 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(-10*cm,10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(-10*cm,10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV21,                      //its logical volume
                             "HDPE21",                    //its name
                             fLBox,                          //its mother  volume
@@ -504,14 +504,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box22 = new G4Box("HDPE22",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV22 = new G4LogicalVolume(HDPE_Box22,                     //its shape
                               polyethylene,                      //its material
                              "HDPE22");                  //its name
 
   HDPE_PV22 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(-10*cm,0*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(-10*cm,0*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV22,                      //its logical volume
                             "HDPE22",                    //its name
                             fLBox,                          //its mother  volume
@@ -521,14 +521,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 //The HDPE_block23
 
   HDPE_Box23 = new G4Box("HDPE23",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV23 = new G4LogicalVolume(HDPE_Box23,                     //its shape
                               polyethylene,                      //its material
                              "HDPE23");                  //its name
 
   HDPE_PV23 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(10*cm,0*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(10*cm,0*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV23,                      //its logical volume
                             "HDPE23",                    //its name
                             fLBox,                          //its mother  volume
@@ -540,14 +540,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   
 
   HDPE_Box24 = new G4Box("HDPE24",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV24 = new G4LogicalVolume(HDPE_Box24,                     //its shape
                               polyethylene,                      //its material
                              "HDPE24");                  //its name
 
   HDPE_PV24 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(0,10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV24,                      //its logical volume
                             "HDPE24",                    //its name
                             fLBox,                          //its mother  volume
@@ -558,14 +558,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box25 = new G4Box("HDPE25",                             //its name
-                   fblockSize/2,fblockSize/2,fblockSize/2);   //its dimensions
+                   fblockSize/2,fblockSize/2,25*cm/2);   //its dimensions
 
   HDPE_LV25 = new G4LogicalVolume(HDPE_Box25,                     //its shape
                               polyethylene,                      //its material
                              "HDPE25");                  //its name
 
   HDPE_PV25 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,-10*cm,25*cm),            //at (0,0,0)
+                            G4ThreeVector(0,-10*cm,32.5*cm),            //at (0,0,0)
                              HDPE_LV25,                      //its logical volume
                             "HDPE25",                    //its name
                             fLBox,                          //its mother  volume
@@ -595,7 +595,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                              "Lead");                  //its name
 
   Lead_PV = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,0,12.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0,0,42.5*cm),            //at (0,0,0)
                              Lead_LV,                      //its logical volume
                             "Lead",                    //its name
                             fLBox,                          //its mother  volume
@@ -695,7 +695,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   Borated_PV1 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0*cm,0*cm,31.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0*cm,0*cm,46.5*cm),            //at (0,0,0)
                              Borated_LV1,                      //its logical volume
                             "Borated1",                    //its name
                             fLBox,                          //its mother  volume
@@ -736,14 +736,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   LeadSize = 3*cm;
   Lead_Box2 = new G4Box("Lead2",                             //its name
-                   30*cm/2,LeadSize/2,33*cm/2);   //its dimensions
+                   30*cm/2,LeadSize/2,48*cm/2);   //its dimensions
 
   Lead_LV2 = new G4LogicalVolume(Lead_Box2,                     //its shape
                               leadMaterial,                      //its material
                              "Lead2");                  //its name
 
   Lead_PV2 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0*cm,16.5*cm,16.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0*cm,16.5*cm,24*cm),            //at (0,0,0)
                              Lead_LV2,                      //its logical volume
                             "Lead2",                    //its name
                             fLBox,                          //its mother  volume
