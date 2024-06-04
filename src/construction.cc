@@ -763,14 +763,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
      //The lead3
  
   Lead_Box3 = new G4Box("Lead3",                             //its name
-                   3*cm/2,30*cm/2, 33*cm/2);   //its dimensions
+                   3*cm/2,30*cm/2, 48*cm/2);   //its dimensions
 
   Lead_LV3 = new G4LogicalVolume(Lead_Box3,                     //its shape
                               leadMaterial,                      //its material
                              "Lead3");                  //its name
 
   Lead_PV3 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(16.5*cm,0*cm,16.5*cm),            //at (0,0,0)
+                            G4ThreeVector(16.5*cm,0*cm,24*cm),            //at (0,0,0)
                              Lead_LV3,                      //its logical volume
                             "Lead3",                    //its name
                             fLBox,                          //its mother  volume
@@ -784,14 +784,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   //The lead4
 
   Lead_Box4 = new G4Box("Lead4",                             //its name
-                   3*cm/2,30*cm/2, 33*cm/2);   //its dimensions
+                   3*cm/2,30*cm/2, 48*cm/2);   //its dimensions
 
   Lead_LV4 = new G4LogicalVolume(Lead_Box4,                     //its shape
                               leadMaterial,                      //its material
                              "Lead4");                  //its name
 
   Lead_PV4 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(-16.5*cm,0*cm,16.5*cm),            //at (0,0,0)
+                            G4ThreeVector(-16.5*cm,0*cm,24*cm),            //at (0,0,0)
                              Lead_LV4,                      //its logical volume
                             "Lead4",                    //its name
                             fLBox,                          //its mother  volume
