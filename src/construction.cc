@@ -102,7 +102,7 @@ void DetectorConstruction::DefineMaterials()
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
   // The world
-  fBoxSize = 2*m;
+  fBoxSize = 3*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -843,7 +843,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,80*cm), // distance from the collimator to the detector. 
+                                    G4ThreeVector(0.*cm,0.*cm,127*cm), // distance from the collimator to the detector. 
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
