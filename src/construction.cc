@@ -92,6 +92,20 @@ void DetectorConstruction::DefineMaterials()
   CF4->AddElement(C,1);
   CF4->AddElement(F,4);
 
+  // ------------------------------------ Polypropilene ------------------------------------
+
+  nist->FindOrBuildMaterial("G4_POLYPROPYLENE");
+  PP = G4Material::GetMaterial("G4_POLYPROPYLENE");
+
+  
+//----------------------------------- Aluminium ------------------------------------
+ 
+   G4double density;
+   Aluminium = new G4Material("Al", z = 13., a = 26.98 * g / mole,
+                        density = 2.7 * g / cm3);
+ 
+   
+
 //....................End of scintillator material........................................
 
 
@@ -844,7 +858,28 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                                fLBox,
                                                false,
                                                0,true);
+
+   //placing the aluminium coating.
+  // The Coating
+  auto coatingThickness = 100*nm; //100nm
+  auto size = 70*cm;
+  auto coatingSolid = new G4Box("coatingSolid", size/2, size/2, coatingThickness/2); // Adjust the size to cover the polyethylene shield completely
+  auto lCoating = new G4LogicalVolume(coatingSolid, Aluminium, "AluminiumCoating");
+
+  // Place aluminum coating around the polyethylene shield
+  auto pCoating = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*cm, 0.*cm, 112.30001*cm),
+                                               lCoating,
+                                               "AluminiumCoating",
+                                               fLBox,
+                                               false,
+                                               0,true);
   
+  lCoating->SetVisAttributes(red); 
+
+
+ 
+  // placing the CF4, this is a low pressure gas
   G4double ScThick_1 =  3.0*mm;
 
   auto sScore_1 = new G4Box("sScore_1",
@@ -855,7 +890,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,112.3*cm), // distance from the collimator to the detector. 
+                                    G4ThreeVector(0.*cm,0.*cm,112.60002*cm), // distance from the collimator to the detector. 
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
@@ -865,7 +900,22 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   fScoringVolume_1 = fLScore_1;
 
+  //place the polyprophlene foil here
+  // The Foil.
+  G4double foilThickness = 100*nm; //100nm
+  G4double size_pp = 70*cm;
+  G4Box* foilSolid = new G4Box("foilSolid", size_pp/2, size_pp/2, foilThickness/2); // Adjust the size to >
+  G4LogicalVolume* PPCoating = new G4LogicalVolume(foilSolid, PP, "PPCoating");
+  G4PVPlacement* foilCoating = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*cm, 0.*cm, 112.90003*cm),
+                                               PPCoating,
+                                               "PPCoating",
+                                               fLBox,
+                                               false,
+                                               0,true);
 
+
+  PPCoating->SetVisAttributes(yellow); 
 
 
 
