@@ -60,8 +60,8 @@ private:
      G4double           fBoxSize, fblockSize,fLeadSize,BoratedSize,Borated_thickness,LeadSize,fGraphiteSize;
      G4Material*        fMaterial;
      G4Material *Air, *b_polyethylene,  *polyethylene, *NaI, *CF4,*mat_graphite;
-     G4Material  * leadMaterial;
-     G4Element  *Na, *I, *C,*N,*O,*F;
+     G4Material  * leadMaterial, *Aluminium,*PP;
+     G4Element  *Na, *I, *C,*N,*O,*F,*Al;
      G4Material *Vacc;
 
      void DefineMaterials();
