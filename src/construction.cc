@@ -848,7 +848,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
    
- //place a convertor for neutron-proton conversion. 
+  //place a convertor for neutron-proton conversion. 
   auto shield = new G4Box("shield", 70/2*cm, 70/2*cm, 3.0/2*mm);
   auto lShield = new G4LogicalVolume(shield, polyethylene, "Shield");    
   auto pShield = new G4PVPlacement(0,
@@ -859,7 +859,28 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                                                false,
                                                0,true);
 
-   //placing the aluminium coating.
+
+  //place the first polyprophlene foil here
+  // The Foil.
+  G4double ppThickness = 1000000*nm; 
+  G4double size_pp1 = 70*cm;
+  G4Box* foilSolid1 = new G4Box("foilSolid1", size_pp1/2, size_pp1/2, ppThickness/2); // Adjust the size to >
+  G4LogicalVolume* PPCoating1 = new G4LogicalVolume(foilSolid1, PP, "PPCoating1");
+  G4PVPlacement* foilCoating1 = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*cm, 0.*cm, 112.25*cm),
+                                               PPCoating1,
+                                               "PPCoating1",
+                                               fLBox,
+                                               false,
+                                               0,true);
+
+
+  PPCoating1->SetVisAttributes(yellow); 
+
+
+ 
+
+ //placing the aluminium coating.
   // The Coating
   auto coatingThickness = 100*nm; //100nm
   auto size = 70*cm;
@@ -868,7 +889,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   // Place aluminum coating around the polyethylene shield
   auto pCoating = new G4PVPlacement(0,
-                                               G4ThreeVector(0.*cm, 0.*cm, 112.30001*cm),
+                                               G4ThreeVector(0.*cm, 0.*cm, 112.35001*cm),
                                                lCoating,
                                                "AluminiumCoating",
                                                fLBox,
@@ -880,17 +901,17 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
  
   // placing the CF4, this is a low pressure gas
-  G4double ScThick_1 =  3.0*mm;
+  G4double ScThick_1 =  3.0*cm;
 
   auto sScore_1 = new G4Box("sScore_1",
                             70/2*cm,70/2*cm,ScThick_1/2);
 
   auto fLScore_1 = new G4LogicalVolume(sScore_1,
-                                       CF4,
+                                       Vacc,
                                       "fLScore_1");
 
   auto fPScore_r_1 = new G4PVPlacement(0,
-                                    G4ThreeVector(0.*cm,0.*cm,112.60002*cm), // distance from the collimator to the detector. 
+                                    G4ThreeVector(0.*cm,0.*cm,113.85002*cm), // distance from the collimator to the detector. 
                                     fLScore_1,
                                     "fPScore_r_1",
                                     fLBox,
@@ -900,14 +921,33 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
   fScoringVolume_1 = fLScore_1;
 
+  //placing the 2nd aluminium coating.
+  // The Coating
+  auto coatingThickness2 = 100*nm; //100nm
+  auto size2 = 70*cm;
+  auto coatingSolid2 = new G4Box("coatingSolid2", size2/2, size2/2, coatingThickness2/2); // Adjust the size to cover the polyethylene shield completely
+  auto lCoating2 = new G4LogicalVolume(coatingSolid2, Aluminium, "AluminiumCoating2");
+
+  // Place aluminum coating around the polyethylene shield
+  auto pCoating2 = new G4PVPlacement(0,
+                                               G4ThreeVector(0.*cm, 0.*cm, 115.35003*cm),
+                                               lCoating2,
+                                               "AluminiumCoating2",
+                                               fLBox,
+                                               false,
+                                               0,true);
+  
+  lCoating2->SetVisAttributes(red); 
+
+
   //place the polyprophlene foil here
   // The Foil.
-  G4double foilThickness = 100*nm; //100nm
+  G4double foilThickness = 1000000*nm; //100nm
   G4double size_pp = 70*cm;
   G4Box* foilSolid = new G4Box("foilSolid", size_pp/2, size_pp/2, foilThickness/2); // Adjust the size to >
   G4LogicalVolume* PPCoating = new G4LogicalVolume(foilSolid, PP, "PPCoating");
   G4PVPlacement* foilCoating = new G4PVPlacement(0,
-                                               G4ThreeVector(0.*cm, 0.*cm, 112.90003*cm),
+                                               G4ThreeVector(0.*cm, 0.*cm, 115.45003*cm),
                                                PPCoating,
                                                "PPCoating",
                                                fLBox,
@@ -919,8 +959,8 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 
-
   return fPBox;
+
 }
 
 //...ooooooooooooooooo..................................oooooooooooooooooooo......
