@@ -35,6 +35,8 @@ public:
    ~DetectorConstruction();
 
     G4LogicalVolume *GetScoringVolume() const {return fScoringVolume_1;}
+    // Add a method to get scoring volumes by index
+    G4LogicalVolume* GetScoringVolume(int index) const { return fScoringVolumes[index]; }
     
 
     virtual G4VPhysicalVolume* Construct();
@@ -52,6 +54,8 @@ private:
      G4LogicalVolume   *HDPE_LV11,*HDPE_LV12,*HDPE_LV13,*HDPE_LV14,*HDPE_LV15,*HDPE_LV16,*HDPE_LV17,*Borated_LV1,*logicScintillator,*Lead_LV1,*Lead_LV2,*Lead_LV3;
      G4LogicalVolume   *HDPE_LV18,*HDPE_LV19,*HDPE_LV20,*HDPE_LV21,*HDPE_LV22,*HDPE_LV23,*HDPE_LV24,*HDPE_LV25;
      G4LogicalVolume   *fScoringVolume_1, *Hole_LV,*Hole_LV3;
+      // Store scoring volumes in a vector
+     std::vector<G4LogicalVolume*> fScoringVolumes;
      G4SubtractionSolid    *collimator;
      G4VSolid *Hole, *Hole3;
 
@@ -60,7 +64,7 @@ private:
      G4double           fBoxSize, fblockSize,fLeadSize,BoratedSize,Borated_thickness,LeadSize,fGraphiteSize;
      G4Material*        fMaterial;
      G4Material *Air, *b_polyethylene,  *polyethylene, *NaI, *CF4,*mat_graphite;
-     G4Material  * leadMaterial, *Aluminium,*PP;
+     G4Material  *leadMaterial,*Aluminium,*PP;
      G4Element  *Na, *I, *C,*N,*O,*F,*Al;
      G4Material *Vacc;
 
