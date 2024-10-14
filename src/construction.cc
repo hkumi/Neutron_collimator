@@ -86,13 +86,14 @@ void DetectorConstruction::DefineMaterials()
 
   //...............creating the materials for the scintillator..............................
   //----------------------------------- CarbonTetrafluoride ------------------------
-  G4double pressure = 0.0328947*atmosphere; //25Torr
+  G4double pressure = 0.046*atmosphere; //35Torr
   G4double temperature = 293.15*kelvin; // 
   CF4 = new G4Material("CF4", 0.1223*mg/cm3,2,kStateGas,temperature,pressure);
   CF4->AddElement(C,1);
   CF4->AddElement(F,4);
 
-  // ------------------------------------ Polypropilene ------------------------------------
+
+   // ------------------------------------ Polypropilene ------------------------------------
 
   nist->FindOrBuildMaterial("G4_POLYPROPYLENE");
   PP = G4Material::GetMaterial("G4_POLYPROPYLENE");
@@ -104,7 +105,7 @@ void DetectorConstruction::DefineMaterials()
    Aluminium = new G4Material("Al", z = 13., a = 26.98 * g / mole,
                         density = 2.7 * g / cm3);
  
-   
+
 
 //....................End of scintillator material........................................
 
@@ -115,8 +116,11 @@ void DetectorConstruction::DefineMaterials()
 
 G4VPhysicalVolume *DetectorConstruction::Construct()
 {
+
+   
+
   // The world
-  fBoxSize = 3*m;
+  fBoxSize = 5*m;
 
 
   sBox = new G4Box("world",                             //its name
@@ -140,14 +144,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   HDPE_Box1 = new G4Box("HDPE1",                             //its name
-                   fblockSize/2,fblockSize/2,2*cm/2);   //its dimensions
+                   10*cm/2,10*cm/2,1*cm/2);   //its dimensions
 
   HDPE_LV1 = new G4LogicalVolume(HDPE_Box1,                     //its shape
                               polyethylene,                      //its material
                              "HDPE1");                  //its name
 
   HDPE_PV1 = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,0,5*cm),            //at (0,0,0)
+                            G4ThreeVector(0,0,0.5*cm),            //at (0,0,0)
                              HDPE_LV1,                      //its logical volume
                             "HDPE1",                    //its name
                             fLBox,                          //its mother  volume
@@ -252,6 +256,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
   HDPE_LV7 = new G4LogicalVolume(HDPE_Box7,                     //its shape
                               polyethylene,                      //its material
                              "HDPE7");                  //its name
+
 
   HDPE_PV7 = new G4PVPlacement(0,                          //no rotation
                             G4ThreeVector(-10*cm,0,5*cm),            //at (0,0,0)
@@ -588,15 +593,6 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 
-
-
-
-
-
-
-  
-
-
 //The lead1
   fLeadSize = 10*cm;
 
@@ -609,7 +605,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                              "Lead");                  //its name
 
   Lead_PV = new G4PVPlacement(0,                          //no rotation
-                            G4ThreeVector(0,0,12.5*cm),            //at (0,0,0)
+                            G4ThreeVector(0,0,3.5*cm),            //at (0,0,0)
                              Lead_LV,                      //its logical volume
                             "Lead",                    //its name
                             fLBox,                          //its mother  volume
@@ -623,6 +619,8 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
    red->SetForceAuxEdgeVisible(true);
 
    Lead_LV->SetVisAttributes(red);
+
+//................................................................................
    // Graphite block1 
 /*
   fGraphiteSize = 10*cm;
@@ -687,6 +685,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
   */
+//.........................................................................................................................................
   //The Borated polythylene_block1 with pinhole
 
   BoratedSize = 30*cm;
@@ -724,6 +723,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             false,                      //no boolean operation
                             0,true);                         //copy number
 
+//..................................................
 /*
   Hole_PV3 = new G4PVPlacement(0,                          //no rotation
                             G4ThreeVector(0*cm,0*cm,0*cm),            //at (0,0,0)
@@ -736,6 +736,7 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
 
 
 */
+//.......................................................................
 
    G4VisAttributes* green = new G4VisAttributes(G4Colour::Green());
 
@@ -841,14 +842,14 @@ G4VPhysicalVolume *DetectorConstruction::Construct()
                             0,true);                         //copy number
 
 
- Lead_LV5->SetVisAttributes(red);
-
-
-
 
 
    
-// Define dimensions and materials
+  Lead_LV5->SetVisAttributes(red);
+
+
+
+   // Define dimensions and materials
 G4double shieldThickness = 0.001*cm; // 10 microns
 G4double ppThickness = 0.0001*cm;    // 1 micrometer
 G4double coatingThickness = 0.00001*cm; // 0.1 micrometer
@@ -915,7 +916,10 @@ for (int i = 0; i < 100; ++i) {
                                      false,
                                      0, true);
 
-    fScoringVolume_1 = fLScore;
+    //fScoringVolume_1 = fLScore;
+    // After creating each scoring volume, push it to the vector
+    fScoringVolumes.push_back(fLScore);
+
 
     // Place a second aluminum coating
     G4Box* coatingSolid2 = new G4Box("coatingSolid2", size/2, size/2, coatingThickness/2);
@@ -951,7 +955,6 @@ for (int i = 0; i < 100; ++i) {
 
 
   return fPBox;
-
 }
 
 //...ooooooooooooooooo..................................oooooooooooooooooooo......
